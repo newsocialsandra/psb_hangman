@@ -70,7 +70,7 @@ def start_game():
 	print "Try to find the song title I'm thinking of, or else a man will DIE!"
 	time.sleep(0.5)
 	print 
-	print ("DISCLAIMER: No men has been hurt in the making of this game.")
+	print ("DISCLAIMER: No men were harmed in the making of this game.")
 	print 
 	time.sleep(0.5)
 	game(wrong_guesses, letters_guessed)
