@@ -84,9 +84,6 @@ def display_board(wrong_guesses, letters_guessed):
 
 
 def game(wrong_guesses, letters_guessed):
-	print "SONG TITLE: " + "".join(progress)
-	print 
-
 	while wrong_guesses < 6:
 		if answer == "".join(progress):
 			print "YOU WON!! HURRAH!"
