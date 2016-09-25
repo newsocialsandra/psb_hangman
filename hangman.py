@@ -73,7 +73,7 @@ def start_game():
 	print ("DISCLAIMER: No men were harmed in the making of this game.")
 	print 
 	time.sleep(0.5)
-	game(wrong_guesses, letters_guessed)
+	main_game(wrong_guesses, letters_guessed)
 
 def display_board(wrong_guesses, letters_guessed):
 	print HANGMANPIX[wrong_guesses]
@@ -83,7 +83,7 @@ def display_board(wrong_guesses, letters_guessed):
 	print "Letters guessed so far: {}".format(letters_guessed)
 
 
-def game(wrong_guesses, letters_guessed):
+def main_game(wrong_guesses, letters_guessed):
 	while wrong_guesses < 6:
 		if answer == "".join(progress):
 			print "YOU WON!! HURRAH!"
