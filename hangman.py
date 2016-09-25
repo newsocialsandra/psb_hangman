@@ -36,10 +36,13 @@ HANGMANPIX = [""" ""","""
 
 
 songs = "Being Boring, The Dictator Decides, You Choose, I'm not scared, Discoteca, I want a dog, This must be the place I waited years to leave, Vulnerable, Flamboyant, Love etc, Hit and miss"
-print [x.strip() for x in songs.split(',')]
+songs = [x.strip() for x in songs.split(',')]
 
-# Replace this with function to give a random answer:
-answer = "Being boring".lower()
+def get_random_song(songlist):
+	song_index = random.randint(0,len(songlist)-1)
+	return songlist[song_index]
+
+answer = get_random_song(songs).lower()
 progress = []
 wrong_guesses = 0
 letters_guessed = ""
@@ -72,7 +75,7 @@ def start_game():
 	time.sleep(0.5)
 	game(wrong_guesses, letters_guessed)
 
-def displayBoard(wrong_guesses, letters_guessed):
+def display_board(wrong_guesses, letters_guessed):
 	print HANGMANPIX[wrong_guesses]
 	print
 	print "SONG TITLE: " + "".join(progress)
@@ -98,11 +101,11 @@ def game(wrong_guesses, letters_guessed):
 				letter_position = [pos for pos, char in enumerate(answer) if char == letter_guess]
 				for position in letter_position:
 					progress[position] = letter_guess
-				displayBoard(wrong_guesses,letters_guessed)
+				display_board(wrong_guesses,letters_guessed)
 			else:
 				print  "*ANGRY BEEP*\n{} is NOT in the song title I'm thinking of.".format(letter_guess)
 				wrong_guesses += 1
-				displayBoard(wrong_guesses,letters_guessed)
+				display_board(wrong_guesses,letters_guessed)
 
 	if wrong_guesses == 6:
 		print "GAME OVER - YOU LOSE :("
