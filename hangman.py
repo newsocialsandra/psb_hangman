@@ -53,6 +53,13 @@ for a in answer:
 	else:
 		progress.append("-")
 
+def display_board(wrong_guesses, letters_guessed):
+	print HANGMANPIX[wrong_guesses]
+	print
+	print "SONG TITLE: {}".format("".join(progress))
+	print
+	print "Letters guessed so far: {}".format(letters_guessed)
+
 def start_game():
 	print ("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 	time.sleep(0.5)
@@ -65,22 +72,15 @@ def start_game():
 	print ("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 	time.sleep(0.5)
 	print 
-	print "Hello and welcome to hangman - Pet Shop Boys edition!!!!"
+	print "Hello and welcome to hangman - Pet Shop Boys edition!"
 	time.sleep(0.5)
-	print "Try to find the song title I'm thinking of, or else a man will DIE!"
+	print "Try to find the song title I'm thinking of, or else a man will DIE."
 	time.sleep(0.5)
 	print 
 	print ("DISCLAIMER: No men were harmed in the making of this game.")
 	print 
 	time.sleep(0.5)
 	main_game(wrong_guesses, letters_guessed)
-
-def display_board(wrong_guesses, letters_guessed):
-	print HANGMANPIX[wrong_guesses]
-	print
-	print "SONG TITLE: " + "".join(progress)
-	print
-	print "Letters guessed so far: {}".format(letters_guessed)
 
 
 def main_game(wrong_guesses, letters_guessed):
@@ -91,17 +91,24 @@ def main_game(wrong_guesses, letters_guessed):
 		else:
 			print 
 			letter_guess = raw_input("Guess a letter: ")
-			letters_guessed += "{}, ".format(letter_guess)
-
-			if letter_guess in answer:
+			letter_guess = letter_guess.lower()
+			if letter_guess in letters_guessed:
+				print "You have already guessed that letter. Guess again."
+			elif len(letter_guess) != 1:
+				print "Please enter a single letter."
+			elif letter_guess not in 'abcdefghijklmnopqrstuvwxyz':
+				print'That was not a LETTER, guess again.'
+			elif letter_guess in answer:
 				print "YUP!\n{} is in the song title I'm thinking of.".format(letter_guess)
 				letter_position = [pos for pos, char in enumerate(answer) if char == letter_guess]
 				for position in letter_position:
 					progress[position] = letter_guess
+				letters_guessed += "{}, ".format(letter_guess)
 				display_board(wrong_guesses,letters_guessed)
 			else:
 				print  "*ANGRY BEEP*\n{} is NOT in the song title I'm thinking of.".format(letter_guess)
 				wrong_guesses += 1
+				letters_guessed += "{}, ".format(letter_guess)
 				display_board(wrong_guesses,letters_guessed)
 
 	if wrong_guesses == 6:
