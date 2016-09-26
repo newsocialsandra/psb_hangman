@@ -35,7 +35,7 @@ HANGMANPIX = [""" ""","""
 |            """]
 
 
-songs = "Being Boring, The Dictator Decides, You Choose, I'm not scared, Discoteca, I want a dog, This must be the place I waited years to leave, Vulnerable, Flamboyant, Love etc, Hit and miss"
+songs = "West End Girls, Always on my mind, It's a sin, Go West, Domino Dancing, Suburbia, Rent, Heart, Being Boring, The Dictator Decides, You Choose, I'm not scared, Discoteca, I want a dog, This must be the place I waited years to leave, Vulnerable, Flamboyant, Love etc, Hit and miss"
 songs = [x.strip() for x in songs.split(',')]
 
 def get_random_song(songlist):
